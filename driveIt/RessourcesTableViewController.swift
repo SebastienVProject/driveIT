@@ -14,6 +14,8 @@ class RessourcesTableViewController: UITableViewController {
 
     var ressources = [Resource]()
 
+    @IBOutlet var myTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +38,7 @@ class RessourcesTableViewController: UITableViewController {
                     self.ressources.append(currentRessource)
                 }
                 
-                self.reloadData()
+                self.myTableView.reloadData()
             }
         })
     }
