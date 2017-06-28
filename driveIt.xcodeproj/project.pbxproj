@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D336F091F0120B300D39250 /* CompetencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F081F0120B300D39250 /* CompetencesViewController.swift */; };
 		2D336F0B1F0121D900D39250 /* skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F0A1F0121D900D39250 /* skill.swift */; };
+		2D336F0D1F02770F00D39250 /* RessourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */; };
 		2D73C9A61EFE77B20028FA1D /* dataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9A51EFE77B20028FA1D /* dataService.swift */; };
 		2D73C9A91EFE7C9A0028FA1D /* project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9A81EFE7C9A0028FA1D /* project.swift */; };
 		2D73C9AB1EFEB6E50028FA1D /* ExigencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9AA1EFEB6E50028FA1D /* ExigencesViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		2D336F081F0120B300D39250 /* CompetencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetencesViewController.swift; sourceTree = "<group>"; };
 		2D336F0A1F0121D900D39250 /* skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = skill.swift; sourceTree = "<group>"; };
+		2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourcesTableViewController.swift; sourceTree = "<group>"; };
 		2D73C9A51EFE77B20028FA1D /* dataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataService.swift; sourceTree = "<group>"; };
 		2D73C9A81EFE7C9A0028FA1D /* project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = project.swift; sourceTree = "<group>"; };
 		2D73C9AA1EFEB6E50028FA1D /* ExigencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExigencesViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				2D73C9AA1EFEB6E50028FA1D /* ExigencesViewController.swift */,
 				2D73C9AE1EFED9830028FA1D /* TachesViewController.swift */,
 				2D73C9B21EFF1BB20028FA1D /* RessourcesViewController.swift */,
+				2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */,
 				2D336F081F0120B300D39250 /* CompetencesViewController.swift */,
 				2DCB57681EF9B72700D59B08 /* Main.storyboard */,
 				2DCB576B1EF9B72700D59B08 /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 				2D73C9B11EFED9D40028FA1D /* task.swift in Sources */,
 				2D73C9A61EFE77B20028FA1D /* dataService.swift in Sources */,
 				2D73C9AB1EFEB6E50028FA1D /* ExigencesViewController.swift in Sources */,
+				2D336F0D1F02770F00D39250 /* RessourcesTableViewController.swift in Sources */,
 				2D73C9AD1EFEC17D0028FA1D /* requirement.swift in Sources */,
 				2DCB57771EF9C55300D59B08 /* ProjetsViewController.swift in Sources */,
 				2DD8A8121EFC71D900501495 /* LoginEmailViewController.swift in Sources */,
