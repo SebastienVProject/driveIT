@@ -40,6 +40,8 @@ class AccueilViewController: UIViewController, UITableViewDelegate, UITableViewD
             performSegue(withIdentifier: "SegueAccueilProjet", sender: nil)
         case 1:
             performSegue(withIdentifier: "segueAccueilRessource", sender: nil)
+        case 2:
+            performSegue(withIdentifier: "segueAccueilCompetence", sender: nil)
         default:
             print("choix non valide")
         }

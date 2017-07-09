@@ -7,17 +7,37 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ListeCompetencesTableViewController: UITableViewController {
 
+    var competences = [skill]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let referenceTable = DataService.dataService.SKILLS
+        
+        referenceTable.observe(DataEventType.value, with: { (snapshot) in
+            if snapshot.childrenCount > 0 {
+                self.competences.removeAll()
+                
+                for competence in snapshot.children.allObjects as! [DataSnapshot] {
+                    
+                    let Objet = competence.value as? [String: AnyObject]
+                    
+                    let competenceId = Objet?["id"]
+                    let competenceNom = Objet?["nom"]
+                    let competenceCat = Objet?["cat"]
+                    
+                    let currentObject = skill(id: competenceId as? String, name: competenceNom as? String, category: competenceCat as? String)
+                    
+                    self.competences.append(currentObject)
+                }
+                
+                self.tableView.reloadData()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,14 +49,53 @@ class ListeCompetencesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return competences.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListeCompetencesTableViewCell
+        
+        let currentSkill: skill = competences[indexPath.row]
+        
+        Cell.idLabel?.text = currentSkill.id
+        Cell.libelleLabel?.text = currentSkill.name
+        Cell.categorieLabel?.text = currentSkill.category
+        return Cell
+    }
+    
+    @IBAction func AddTapped(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Ajouter une compétence", message: "Merci de saisir les informations concernant la compétence à créer", preferredStyle: .alert)
+        
+        alert.addTextField { (codeTextField) in codeTextField.placeholder = "code compétence" }
+        alert.addTextField { (libelleTextField) in libelleTextField.placeholder = "libellé compétence" }
+        alert.addTextField { (categorieTextField) in categorieTextField.placeholder = "categorie ressource" }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            let code = alert.textFields?[0].text
+            let libelle = alert.textFields?[1].text
+            let categorie = alert.textFields?[2].text
+            
+            self.SGBD_add_skill(code: code!, libelle: libelle!, categorie: categorie!)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func SGBD_add_skill(code: String, libelle: String, categorie: String) {
+        
+        if code != "" && libelle != "" && categorie != "" {
+            let referenceTable: DatabaseReference = DataService.dataService.SKILLS
+            
+            let AAjouter = ["id": code, "nom": libelle, "cat": categorie]
+            referenceTable.child(code).setValue(AAjouter)
+        }
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

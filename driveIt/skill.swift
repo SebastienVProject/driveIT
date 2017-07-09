@@ -2,21 +2,19 @@
 //  skill.swift
 //  driveIt
 //
-//  Created by utilisateur on 26/06/2017.
+//  Created by utilisateur on 09/07/2017.
 //  Copyright © 2017 SVInfo. All rights reserved.
 //
 
-class Skill {
+class skill {
     
     var id: String?
     var name: String?
-    var level: Int?
-    var idResource: String?
+    var category: String?
     
-    init(id: String?, name: String?, level: Int?, idResource: String?) {
+    init(id: String?, name: String?, category: String?) {
         self.id = id
         self.name = name
-        self.level = level
-        self.idResource = idResource
+        self.category = category
     }
 }

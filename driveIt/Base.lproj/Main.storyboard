@@ -62,6 +62,7 @@
                     <connections>
                         <segue destination="Lf5-mW-GgK" kind="show" identifier="SegueAccueilProjet" id="N1U-D4-22K"/>
                         <segue destination="Vwc-Wt-2dV" kind="show" identifier="segueAccueilRessource" id="BHU-Wq-mHJ"/>
+                        <segue destination="vlH-J3-7Yr" kind="show" identifier="segueAccueilCompetence" id="891-Fc-K7P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -379,19 +380,47 @@
         <!--ListeCompetences-->
         <scene sceneID="vOU-rX-kId">
             <objects>
-                <tableViewController id="vlH-J3-7Yr" userLabel="ListeCompetences" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cdR-c9-MEu">
+                <tableViewController id="vlH-J3-7Yr" userLabel="ListeCompetences" customClass="ListeCompetencesTableViewController" customModule="driveIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="cdR-c9-MEu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bIV-v5-lNb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="bIV-v5-lNb" customClass="ListeCompetencesTableViewCell" customModule="driveIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bIV-v5-lNb" id="czj-lM-GiO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTM-LO-BYa">
+                                            <rect key="frame" x="18" y="29" width="89" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpF-vK-6Mt">
+                                            <rect key="frame" x="115" y="29" width="252" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arf-fd-iMd">
+                                            <rect key="frame" x="18" y="51" width="349" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categorieLabel" destination="arf-fd-iMd" id="H6N-0x-c8i"/>
+                                    <outlet property="idLabel" destination="nTM-LO-BYa" id="Eqe-Cz-F0I"/>
+                                    <outlet property="libelleLabel" destination="fpF-vK-6Mt" id="Ije-as-STi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -399,11 +428,17 @@
                             <outlet property="delegate" destination="vlH-J3-7Yr" id="B16-Eh-jVv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="liste des compétences" id="sIp-Nh-fDa"/>
+                    <navigationItem key="navigationItem" title="liste des compétences" id="sIp-Nh-fDa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dSe-CB-jGM">
+                            <connections>
+                                <action selector="AddTapped:" destination="vlH-J3-7Yr" id="R3I-7Y-hro"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCW-bR-FaD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981" y="934"/>
+            <point key="canvasLocation" x="2777" y="220"/>
         </scene>
         <!--Exigences-->
         <scene sceneID="flD-jN-bvJ">
@@ -551,4 +586,7 @@
             <point key="canvasLocation" x="949.60000000000002" y="-559.07046476761627"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="891-Fc-K7P"/>
+    </inferredMetricsTieBreakers>
 </document>

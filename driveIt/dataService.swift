@@ -18,6 +18,7 @@ class DataService {
     private var _TASKS = Database.database().reference().child("tasks")
     private var _RESOURCES = Database.database().reference().child("resources")
     private var _SKILLS = Database.database().reference().child("skills")
+    private var _L_SKILLS_RESSOURCES = Database.database().reference().child("link_skills_ressources")
     
     var BASE_REF: DatabaseReference {
         return _BASE_REF
@@ -41,6 +42,10 @@ class DataService {
 
     var SKILLS: DatabaseReference {
         return _SKILLS
+    }
+
+    var L_SKILLS_RESSOURCES: DatabaseReference {
+        return _L_SKILLS_RESSOURCES
     }
 }
 

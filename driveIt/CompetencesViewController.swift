@@ -14,7 +14,7 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBOutlet weak var tableViewCompetence: UITableView!
     
-    var competences = [Skill]()
+    var competences = [LSkillRessource]()
     
     static var currentResource: String!
     
@@ -23,7 +23,7 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let referenceTable = DataService.dataService.SKILLS.queryOrdered(byChild: "idResource").queryEqual(toValue: CompetencesViewController.currentResource)
+        let referenceTable = DataService.dataService.L_SKILLS_RESSOURCES.queryOrdered(byChild: "idResource").queryEqual(toValue: CompetencesViewController.currentResource)
         
         referenceTable.observe(DataEventType.value, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
@@ -38,7 +38,7 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
                     let competenceLevel = competenceObjet?["level"]
                     let competenceIdResource = competenceObjet?["idResource"]
                     
-                    let currentCompetence = Skill(id: competenceId as? String, name: competenceName as? String, level: competenceLevel as? Int, idResource: competenceIdResource as? String)
+                    let currentCompetence = LSkillRessource(id: competenceId as? String, name: competenceName as? String, level: competenceLevel as? Int, idResource: competenceIdResource as? String)
                     
                     self.competences.append(currentCompetence)
                 }
@@ -67,7 +67,7 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let currentCompetence: Skill
+        let currentCompetence: LSkillRessource
         currentCompetence = competences[indexPath.row]
         
         Cell.textLabel?.text = currentCompetence.name
@@ -93,7 +93,7 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
             let name = alert.textFields?[1].text
             let level = alert.textFields?[2].text
             
-            self.SGBD_add_skill(code: code!, name: name!, level: level!, idResource: CompetencesViewController.currentResource)
+            self.SGBD_add_lSkillRessource(code: code!, name: name!, level: level!, idResource: CompetencesViewController.currentResource)
         }))
         
         alert.addAction(UIAlertAction(title: "Liste", style: .default, handler: { (UIAlertAction) in
@@ -103,10 +103,10 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
         self.present(alert, animated: true, completion: nil)
     }
     
-    func SGBD_add_skill(code: String, name: String, level: String, idResource: String) {
+    func SGBD_add_lSkillRessource(code: String, name: String, level: String, idResource: String) {
         
         if code != "" && name != "" && level != "" && idResource != "" {
-            let referenceTable: DatabaseReference = DataService.dataService.SKILLS
+            let referenceTable: DatabaseReference = DataService.dataService.L_SKILLS_RESSOURCES
             
             //let key = referenceTable.childByAutoId().key
             let AAjouter = ["id": code, "name": name, "level": level, "idResource": idResource]
