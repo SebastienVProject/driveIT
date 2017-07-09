@@ -96,6 +96,10 @@ class CompetencesViewController: UIViewController, UITableViewDelegate, UITableV
             self.SGBD_add_skill(code: code!, name: name!, level: level!, idResource: CompetencesViewController.currentResource)
         }))
         
+        alert.addAction(UIAlertAction(title: "Liste", style: .default, handler: { (UIAlertAction) in
+            self.performSegue(withIdentifier: "segueListeCompetences", sender: nil)
+        }))
+        
         self.present(alert, animated: true, completion: nil)
     }
     

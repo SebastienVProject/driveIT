@@ -52,21 +52,22 @@ class RessourcesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return ressources.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ressources.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let Cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RessourcesTableViewCell
         
         let currentRessource: Resource = ressources[indexPath.row]
         
-        Cell.textLabel?.text = currentRessource.id
+        Cell.nomLabel?.text = currentRessource.nom
+        Cell.prenomLabel?.text = currentRessource.prenom
         return Cell
     }
     
