@@ -72,7 +72,7 @@ class RessourcesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueRessourceCompetence" {
             let RessourceTransmise: Resource = sender as! Resource
-            CompetencesViewController.currentResource = RessourceTransmise.id
+            CompetencesTableViewController.currentResource = RessourceTransmise.id
         }
     }
     

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D336F091F0120B300D39250 /* CompetencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F081F0120B300D39250 /* CompetencesViewController.swift */; };
 		2D336F0B1F0121D900D39250 /* lSkillRessource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F0A1F0121D900D39250 /* lSkillRessource.swift */; };
 		2D336F0D1F02770F00D39250 /* RessourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */; };
 		2D5501CC1F05137000C41CC4 /* RessourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501CB1F05137000C41CC4 /* RessourcesTableViewCell.swift */; };
 		2D5501CE1F122B0500C41CC4 /* ListeCompetencesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501CD1F122B0500C41CC4 /* ListeCompetencesTableViewController.swift */; };
 		2D5501D01F122C7C00C41CC4 /* ListeCompetencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501CF1F122C7C00C41CC4 /* ListeCompetencesTableViewCell.swift */; };
 		2D5501D21F12339A00C41CC4 /* skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501D11F12339A00C41CC4 /* skill.swift */; };
+		2D5501D41F1257BC00C41CC4 /* CompetencesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501D31F1257BC00C41CC4 /* CompetencesTableViewController.swift */; };
+		2D5501D61F1258E100C41CC4 /* CompetencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5501D51F1258E100C41CC4 /* CompetencesTableViewCell.swift */; };
 		2D73C9A61EFE77B20028FA1D /* dataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9A51EFE77B20028FA1D /* dataService.swift */; };
 		2D73C9A91EFE7C9A0028FA1D /* project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9A81EFE7C9A0028FA1D /* project.swift */; };
 		2D73C9AB1EFEB6E50028FA1D /* ExigencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D73C9AA1EFEB6E50028FA1D /* ExigencesViewController.swift */; };
@@ -34,13 +35,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D336F081F0120B300D39250 /* CompetencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetencesViewController.swift; sourceTree = "<group>"; };
 		2D336F0A1F0121D900D39250 /* lSkillRessource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lSkillRessource.swift; sourceTree = "<group>"; };
 		2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourcesTableViewController.swift; sourceTree = "<group>"; };
 		2D5501CB1F05137000C41CC4 /* RessourcesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RessourcesTableViewCell.swift; sourceTree = "<group>"; };
 		2D5501CD1F122B0500C41CC4 /* ListeCompetencesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeCompetencesTableViewController.swift; sourceTree = "<group>"; };
 		2D5501CF1F122C7C00C41CC4 /* ListeCompetencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeCompetencesTableViewCell.swift; sourceTree = "<group>"; };
 		2D5501D11F12339A00C41CC4 /* skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = skill.swift; sourceTree = "<group>"; };
+		2D5501D31F1257BC00C41CC4 /* CompetencesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetencesTableViewController.swift; sourceTree = "<group>"; };
+		2D5501D51F1258E100C41CC4 /* CompetencesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetencesTableViewCell.swift; sourceTree = "<group>"; };
 		2D73C9A51EFE77B20028FA1D /* dataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataService.swift; sourceTree = "<group>"; };
 		2D73C9A81EFE7C9A0028FA1D /* project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = project.swift; sourceTree = "<group>"; };
 		2D73C9AA1EFEB6E50028FA1D /* ExigencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExigencesViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +132,8 @@
 				2D73C9B21EFF1BB20028FA1D /* RessourcesViewController.swift */,
 				2D336F0C1F02770E00D39250 /* RessourcesTableViewController.swift */,
 				2D5501CB1F05137000C41CC4 /* RessourcesTableViewCell.swift */,
-				2D336F081F0120B300D39250 /* CompetencesViewController.swift */,
+				2D5501D31F1257BC00C41CC4 /* CompetencesTableViewController.swift */,
+				2D5501D51F1258E100C41CC4 /* CompetencesTableViewCell.swift */,
 				2D5501CD1F122B0500C41CC4 /* ListeCompetencesTableViewController.swift */,
 				2D5501CF1F122C7C00C41CC4 /* ListeCompetencesTableViewCell.swift */,
 				2DCB57681EF9B72700D59B08 /* Main.storyboard */,
@@ -275,18 +278,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D336F091F0120B300D39250 /* CompetencesViewController.swift in Sources */,
 				2D73C9AF1EFED9830028FA1D /* TachesViewController.swift in Sources */,
 				2D5501CE1F122B0500C41CC4 /* ListeCompetencesTableViewController.swift in Sources */,
 				2DCB57671EF9B72700D59B08 /* AccueilViewController.swift in Sources */,
 				2D336F0B1F0121D900D39250 /* lSkillRessource.swift in Sources */,
 				2D73C9A91EFE7C9A0028FA1D /* project.swift in Sources */,
 				2DCB57651EF9B72700D59B08 /* AppDelegate.swift in Sources */,
+				2D5501D61F1258E100C41CC4 /* CompetencesTableViewCell.swift in Sources */,
 				2D73C9B31EFF1BB20028FA1D /* RessourcesViewController.swift in Sources */,
 				2D5501D01F122C7C00C41CC4 /* ListeCompetencesTableViewCell.swift in Sources */,
 				2D73C9B51EFF1DDB0028FA1D /* resource.swift in Sources */,
 				2D73C9B11EFED9D40028FA1D /* task.swift in Sources */,
 				2D5501CC1F05137000C41CC4 /* RessourcesTableViewCell.swift in Sources */,
+				2D5501D41F1257BC00C41CC4 /* CompetencesTableViewController.swift in Sources */,
 				2D5501D21F12339A00C41CC4 /* skill.swift in Sources */,
 				2D73C9A61EFE77B20028FA1D /* dataService.swift in Sources */,
 				2D73C9AB1EFEB6E50028FA1D /* ExigencesViewController.swift in Sources */,

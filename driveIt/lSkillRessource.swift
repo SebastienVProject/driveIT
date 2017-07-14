@@ -10,10 +10,10 @@ class LSkillRessource {
     
     var id: String?
     var name: String?
-    var level: Int?
+    var level: String?
     var idResource: String?
     
-    init(id: String?, name: String?, level: Int?, idResource: String?) {
+    init(id: String?, name: String?, level: String?, idResource: String?) {
         self.id = id
         self.name = name
         self.level = level

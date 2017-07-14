@@ -10,7 +10,7 @@ import UIKit
 
 class AccueilViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var rubriques = ["Projets", "Ressources", "Compétences", "Tâches", "Actions"]
+    var rubriques = ["Projets", "Ressources", "Compétences", "Mes Tâches", "Mes Actions en cours"]
     
     override var prefersStatusBarHidden: Bool { return true }
     
