@@ -101,14 +101,10 @@ class TachesTableViewController: UITableViewController {
         
         var actions = [UITableViewRowAction]()
         
-        let DefautAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Defaut", handler: { (action, indexPath) -> Void in
-        })
-        actions.append(DefautAction)
-
-        if (taches[indexPath.row].status == "N"){
+        if (taches[indexPath.row].status == "N") {
             let AffectationAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Me l'affecter", handler: { (action, indexPath) -> Void in
                 
-                self.SGBD_add_affectation(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser)
+                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "A")
                 self.tableView.reloadData()
                 
             })
@@ -116,16 +112,37 @@ class TachesTableViewController: UITableViewController {
             
             actions.append(AffectationAction)
         }
+        if (taches[indexPath.row].status == "A") {
+            let AbandonAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Annuler", handler: { (action, indexPath) -> Void in
+                
+                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "N")
+                self.tableView.reloadData()
+                
+            })
+            AbandonAction.backgroundColor = UIColor.red
+            
+            actions.append(AbandonAction)
+
+            let TerminerAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Terminer", handler: { (action, indexPath) -> Void in
+                
+                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "OK")
+                self.tableView.reloadData()
+                
+            })
+            TerminerAction.backgroundColor = UIColor(red: 48.0/255.0, green: 173.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+            
+            actions.append(TerminerAction)
+}
         
         return actions
     }
 
-    func SGBD_add_affectation(idTask: String, idRequirement: String, name: String, idRessource: String) {
+    func SGBD_Update_Tache(idTask: String, idRequirement: String, name: String, idRessource: String, status: String) {
         
-        if idTask != "" && idRequirement != "" && name != "" && idRessource != "" {
+        if idTask != "" && idRequirement != "" && name != "" && idRessource != "" && status != "" {
             let referenceTable: DatabaseReference = DataService.dataService.TASKS
             
-            let AAjouter = ["id": idTask, "idRequirement": idRequirement, "name": name, "idRessource": idRessource, "status": "A"]
+            let AAjouter = ["id": idTask, "idRequirement": idRequirement, "name": name, "idRessource": idRessource, "status": status]
             referenceTable.child(idTask).setValue(AAjouter)
         }
     }
