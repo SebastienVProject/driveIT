@@ -50,7 +50,7 @@ class ExigencesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueExigenceTache" {
             let ExigenceTransmise: Requirement = sender as! Requirement
-            TachesViewController.currentExigence = ExigenceTransmise.id
+            TachesTableViewController.currentExigence = ExigenceTransmise.id
         }
     }
     

@@ -11,10 +11,12 @@ class Task {
     var id: String?
     var name: String?
     var idRequirement: String?
+    var status: String?
     
-    init(id: String?, name: String?, idRequirement: String?) {
+    init(id: String?, name: String?, idRequirement: String?, status: String?) {
         self.id = id
         self.name = name
         self.idRequirement = idRequirement
+        self.status = status
     }
 }

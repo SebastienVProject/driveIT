@@ -19,7 +19,7 @@ class TachesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let referenceTable = DataService.dataService.TASKS.queryOrdered(byChild: "idRequirement").queryEqual(toValue: TachesViewController.currentExigence)
+        let referenceTable = DataService.dataService.TASKS.queryOrdered(byChild: "idRequirement").queryEqual(toValue: TachesTableViewController.currentExigence)
         
         referenceTable.observe(DataEventType.value, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
@@ -32,8 +32,9 @@ class TachesTableViewController: UITableViewController {
                     let tacheId = tacheObjet?["id"]
                     let tacheName = tacheObjet?["name"]
                     let tacheIdRequirement = tacheObjet?["idRequirement"]
+                    let tacheStatus = tacheObjet?["status"]
                     
-                    let currentTache = Task(id: tacheId as? String, name: tacheName as? String, idRequirement: tacheIdRequirement as? String)
+                    let currentTache = Task(id: tacheId as? String, name: tacheName as? String, idRequirement: tacheIdRequirement as? String, status: tacheStatus as? String)
                     
                     self.taches.append(currentTache)
                 }
@@ -78,7 +79,7 @@ class TachesTableViewController: UITableViewController {
             let code = alert.textFields?[0].text
             let name = alert.textFields?[1].text
             
-            self.SGBD_add_task(code: code!, name: name!, idRequirement: TachesViewController.currentExigence)
+            self.SGBD_add_task(code: code!, name: name!, idRequirement: TachesTableViewController.currentExigence)
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -95,6 +96,20 @@ class TachesTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        // Social Sharing Button
+        let AffectationAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Me l'affecter", handler: { (action, indexPath) -> Void in
+            
+            /*let defaultText = "Just checking in at " + self.restaurantNames[indexPath.row]
+            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            self.present(activityController, animated: true, completion: nil)*/
+        })
+        AffectationAction.backgroundColor = UIColor(red: 48.0/255.0, green: 173.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+        
+        return [AffectationAction]
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
