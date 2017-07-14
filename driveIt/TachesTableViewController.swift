@@ -65,6 +65,7 @@ class TachesTableViewController: UITableViewController {
         let currentTache: Task = taches[indexPath.row]
         
         Cell.nomLabel.text = currentTache.name
+        Cell.statusLabel.text = currentTache.status
         return Cell
     }
 
@@ -91,25 +92,44 @@ class TachesTableViewController: UITableViewController {
             let referenceTable: DatabaseReference = DataService.dataService.TASKS
             
             //let key = referenceTable.childByAutoId().key
-            let AAjouter = ["id": code, "name": name, "idRequirement": idRequirement]
+            let AAjouter = ["id": code, "name": name, "idRequirement": idRequirement, "status": "N"]
             referenceTable.child(code).setValue(AAjouter)
         }
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        // Social Sharing Button
-        let AffectationAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Me l'affecter", handler: { (action, indexPath) -> Void in
-            
-            /*let defaultText = "Just checking in at " + self.restaurantNames[indexPath.row]
-            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-            self.present(activityController, animated: true, completion: nil)*/
-        })
-        AffectationAction.backgroundColor = UIColor(red: 48.0/255.0, green: 173.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+        var actions = [UITableViewRowAction]()
         
-        return [AffectationAction]
+        let DefautAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Defaut", handler: { (action, indexPath) -> Void in
+        })
+        actions.append(DefautAction)
+
+        if (taches[indexPath.row].status == "N"){
+            let AffectationAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Me l'affecter", handler: { (action, indexPath) -> Void in
+                
+                self.SGBD_add_affectation(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser)
+                self.tableView.reloadData()
+                
+            })
+            AffectationAction.backgroundColor = UIColor(red: 48.0/255.0, green: 173.0/255.0, blue: 99.0/255.0, alpha: 1.0)
+            
+            actions.append(AffectationAction)
+        }
+        
+        return actions
     }
-    
+
+    func SGBD_add_affectation(idTask: String, idRequirement: String, name: String, idRessource: String) {
+        
+        if idTask != "" && idRequirement != "" && name != "" && idRessource != "" {
+            let referenceTable: DatabaseReference = DataService.dataService.TASKS
+            
+            let AAjouter = ["id": idTask, "idRequirement": idRequirement, "name": name, "idRessource": idRessource, "status": "A"]
+            referenceTable.child(idTask).setValue(AAjouter)
+        }
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

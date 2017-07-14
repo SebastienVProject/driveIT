@@ -11,6 +11,7 @@ import UIKit
 class TachesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nomLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,6 +15,7 @@ class LoginEmailViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var choixControl: UISegmentedControl!
     
+    static var currentUser: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +41,9 @@ class LoginEmailViewController: UIViewController {
                 //sign in
                 Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!, completion: { (user: User?, error: Error?) in
                     if user != nil{
+                        LoginEmailViewController.currentUser = user?.email
                         //actions quand le log in est ok à renseigner ici
-                        self.performSegue(withIdentifier: "segueLoginAccueil", sender: self)
+                        self.performSegue(withIdentifier: "segueLoginFirst", sender: self)
                     } else {
                         if let myError = error?.localizedDescription {
                             print(myError)
@@ -55,7 +57,7 @@ class LoginEmailViewController: UIViewController {
                 Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!, completion: { (user, error) in
                     if user != nil {
                         print("utilisateur créé avec succès")
-                        self.performSegue(withIdentifier: "segueLoginAccueil", sender: self)
+                        self.performSegue(withIdentifier: "segueLoginFirst", sender: self)
                     } else {
                         if let myError = error?.localizedDescription {
                             print(myError)
