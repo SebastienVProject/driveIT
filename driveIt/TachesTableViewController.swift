@@ -32,9 +32,12 @@ class TachesTableViewController: UITableViewController {
                     let tacheId = tacheObjet?["id"]
                     let tacheName = tacheObjet?["name"]
                     let tacheIdRequirement = tacheObjet?["idRequirement"]
+                    let tacheIdRessource = tacheObjet?["idRessource"]
                     let tacheStatus = tacheObjet?["status"]
+                    let tachedateCreation = tacheObjet?["dateCreation"]
+                    let tachedateAffectation = tacheObjet?["dateAffectation"]
                     
-                    let currentTache = Task(id: tacheId as? String, name: tacheName as? String, idRequirement: tacheIdRequirement as? String, status: tacheStatus as? String)
+                    let currentTache = Task(id: tacheId as? String, name: tacheName as? String, idRequirement: tacheIdRequirement as? String, idRessource: tacheIdRessource as? String ,status: tacheStatus as? String, dateCreation: tachedateCreation as? String, dateAffectation: tachedateAffectation as? String)
                     
                     self.taches.append(currentTache)
                 }
@@ -80,7 +83,7 @@ class TachesTableViewController: UITableViewController {
             let code = alert.textFields?[0].text
             let name = alert.textFields?[1].text
             
-            self.SGBD_add_task(code: code!, name: name!, idRequirement: TachesTableViewController.currentExigence)
+            Task.insert(idTask: code!, idRequirement: TachesTableViewController.currentExigence, name: name, status: "N", dateCreation: String(describing: Date()))
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -104,7 +107,7 @@ class TachesTableViewController: UITableViewController {
         if (taches[indexPath.row].status == "N") {
             let AffectationAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Me l'affecter", handler: { (action, indexPath) -> Void in
                 
-                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "A")
+                self.taches[indexPath.row].update(idTask: self.taches[indexPath.row].id!, idRessource: LoginEmailViewController.currentUser, status: "A", dateAffectation: String(describing: Date()))
                 self.tableView.reloadData()
                 
             })
@@ -115,7 +118,7 @@ class TachesTableViewController: UITableViewController {
         if (taches[indexPath.row].status == "A") {
             let AbandonAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Annuler", handler: { (action, indexPath) -> Void in
                 
-                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "N")
+                self.taches[indexPath.row].update(idTask: self.taches[indexPath.row].id!, status: "N")
                 self.tableView.reloadData()
                 
             })
@@ -125,7 +128,7 @@ class TachesTableViewController: UITableViewController {
 
             let TerminerAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Terminer", handler: { (action, indexPath) -> Void in
                 
-                self.SGBD_Update_Tache(idTask: self.taches[indexPath.row].id!, idRequirement: self.taches[indexPath.row].idRequirement!, name: self.taches[indexPath.row].name!, idRessource: LoginEmailViewController.currentUser, status: "OK")
+                self.taches[indexPath.row].update(idTask: self.taches[indexPath.row].id!, status: "OK")
                 self.tableView.reloadData()
                 
             })
@@ -135,16 +138,6 @@ class TachesTableViewController: UITableViewController {
 }
         
         return actions
-    }
-
-    func SGBD_Update_Tache(idTask: String, idRequirement: String, name: String, idRessource: String, status: String) {
-        
-        if idTask != "" && idRequirement != "" && name != "" && idRessource != "" && status != "" {
-            let referenceTable: DatabaseReference = DataService.dataService.TASKS
-            
-            let AAjouter = ["id": idTask, "idRequirement": idRequirement, "name": name, "idRessource": idRessource, "status": status]
-            referenceTable.child(idTask).setValue(AAjouter)
-        }
     }
 
     /*
